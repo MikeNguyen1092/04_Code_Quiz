@@ -37,8 +37,12 @@ const questions = [
 // Current Question is
 questions[questionIndex].q
 // Current answers 
-for (let index = 0; index < questions[questionIndex].a.length; index++) {
+for (let i = 0; i < questions[questionIndex].a.length; i++) {
     // be each answer
-    const element = questions[questionIndex].a[index];
-    
+    const element = questions[questionIndex].a[i];
+    if (questions[questionIndex].c === questions) {
+    console.log("correct!");
+    }
+
+    else; 
 }
