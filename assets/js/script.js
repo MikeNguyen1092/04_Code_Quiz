@@ -12,16 +12,17 @@ function quizGame(){
     answerScript.innerHTML = "";
 
     // get the question from the question js and make it appear on the page
-    questionsScript.textContent = questions[questionNumber].q;
+ 
 
       // Check if the current question has an image
-  if (currentQuestion.q.includes("./assets/images/")) {
+  if (questions[questionNumber].q.includes("./assets/images/")) {
     const image = document.createElement("img");
-    image.src = currentQuestion.q;
+    image.src = questions[questionNumber].q;
     // Append the image element to the HTML where you want it to be displayed
     document.querySelector("#imageContainer").appendChild(image);
+  } else {
+  questionsScript.textContent = questions[questionNumber].q;
   }
-
     // get the corresponding answers and make it appear on the page as button element
     questions[questionNumber].a.forEach(element => {
     const listItem = document.createElement("li");
@@ -39,7 +40,7 @@ function quizGame(){
 
 function correctAnswer(element) {
     let clickedAnswer = element.textContent
-    if (clickedAnswer === questions[questionNumber].c) {
+    if (clickedAnswer == questions[questionNumber].c) {
         console.log("correct!")
     } else {console.log("incorrect");
     }

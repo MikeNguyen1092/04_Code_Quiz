@@ -23,14 +23,14 @@ const questions = [
         c: "Choice 4"
     },
     {
-        q: "Question 5",
+        q: "Who was Ash's first pokemon?",
         a: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         c: "Choice 1"
     },
     {
         q: "./assets/images/charizard.jpg",
-        a: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        c: "Choice 2"
+        a: ["Choice 1", "Charizard", "Choice 3", "Choice 4"],
+        c: "Charizard"
     }
 ]
 
