@@ -1,11 +1,34 @@
-#answersHTML, #questionsHTML {
+body {
+    font-size: 16px;
+}
+
+header {
+    margin: 1em;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+}
+
+#high-score {
+    order: 0;
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 350%;
+    flex-grow: 1;
+    text-align: center;
+      
 }
 
 li {
     list-style: none;
     margin: 1em 0em;
     border: 2px solid gray;
+}
+
+#answersHTML, #questionsHTML {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
