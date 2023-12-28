@@ -9,12 +9,13 @@ function init(){
 }
 
 
-startGame.addEventListener("click", function() {
-    questionsScript.textContent = questions[0].q;
+startGame.addEventListener("click", function(event) {
+    answersScritp.innerHTML = "";
+    questionsScript.textContent = questions[3].q;
 
-    questions[0].a.forEach(element => {
+    questions[3].a.forEach(element => {
     const listItem = document.createElement("li");
     listItem.textContent = element;
-    answersScritp.appendChild(listItem);    
+    answersScritp.appendChild(listItem);
 });
 }) 
