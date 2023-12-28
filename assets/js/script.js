@@ -2,7 +2,8 @@ let startGame = document.querySelector("#start-button");
 let highScore = document.querySelector("#high-score");
 let questionsScript = document.querySelector("#questionsHTML");
 let answerScript = document.querySelector("#answersHTML")
-let questionNumber = 5
+let questionImage = document.querySelector("#imageContainer")
+let questionNumber = 0
 
 
 
@@ -10,6 +11,7 @@ let questionNumber = 5
 function quizGame(){
     // clears the answers so there is no doubles.
     answerScript.innerHTML = "";
+    questionImage.innerHTML = "";
 
     // get the question from the question js and make it appear on the page
  
@@ -19,7 +21,7 @@ function quizGame(){
     const image = document.createElement("img");
     image.src = questions[questionNumber].q;
     // Append the image element to the HTML where you want it to be displayed
-    document.querySelector("#imageContainer").appendChild(image);
+    questionImage.appendChild(image);
   } else {
   questionsScript.textContent = questions[questionNumber].q;
   }
@@ -36,6 +38,7 @@ function quizGame(){
         // You can perform any actions you want when an item is clicked
       });
     });
+    console.log(questions.length)
 }
 
 function correctAnswer(element) {
@@ -45,9 +48,18 @@ function correctAnswer(element) {
     } else {console.log("incorrect");
     }
 }
-
+//TODO: try to get random question to work at the start of game
+// function randomQuestion() {
+//     for (let i=0; i<questions.length;i++){
+//         const j = Math.floor(Math.random() * questions.length);
+//         const temp = questions[i];
+//         questions[i] = questions[j]
+//         questions[j] = temp;
+//     }
+// } 
 
 // Click button to start game - calls the function quizGame
 startGame.addEventListener("click", function() {
 quizGame();
+// randomQuestion();
 });

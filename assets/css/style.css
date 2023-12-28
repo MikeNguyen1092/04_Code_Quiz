@@ -28,7 +28,12 @@ li {
 }
 
 li:hover{
+    cursor: pointer;
     box-shadow: 2px 2px 2px blue;
+}
+
+li:active{
+    background-color: red;
 }
 
 #answersHTML, #questionsHTML, #imageContainer {
