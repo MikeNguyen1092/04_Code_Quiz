@@ -2,7 +2,7 @@ let startGame = document.querySelector("#start-button");
 let highScore = document.querySelector("#high-score");
 let questionsScript = document.querySelector("#questionsHTML");
 let answerScript = document.querySelector("#answersHTML")
-let questionNumber = 0
+let questionNumber = 2
 
 
 
@@ -16,7 +16,7 @@ function quizGame(){
 
     // get the corresponding answers and make it appear on the page as button element
     questions[questionNumber].a.forEach(element => {
-    const listItem = document.createElement("button");
+    const listItem = document.createElement("li");
     listItem.textContent = element;
     answerScript.appendChild(listItem);
 
@@ -31,7 +31,7 @@ function quizGame(){
 
 function correctAnswer(element) {
     let clickedAnswer = element.textContent
-    if (clickedAnswer === questions[0].c) {
+    if (clickedAnswer === questions[questionNumber].c) {
         console.log("correct!")
     } else {console.log("incorrect");
     }
