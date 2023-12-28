@@ -9,17 +9,20 @@
 </head>
 <body>
     <header>
-        <a id="high-score" href="highscores.html">High Score</a>
+        <nav>
+            <a id="high-score" href="highscores.html">View High Score</a>
+            <div id="timer"></div>
+        </nav>
         <h1>Quiz Game</h1>
         
     </header>
     <main>
-        <p>This is a game where to see if you know your pokemon. Fastest time wins. You are deducted 10 seconds for every question you get wrong. Good luck!</p>
-        <button id="start-button">Start Game</button>
+        <p id="prompt"></p>
+        <div id="start-button"></div>
+        <h2 id="questionsHTML"></h2>
         <div id="imageContainer"></div>
-        <p id="questionsHTML"></p>
         <div>
-            <ul id="answersHTML"></ul>
+            <ol id="answersHTML"></ol>
         </div>
     </main>
     <script src="./assets/js/questions.js"></script>
