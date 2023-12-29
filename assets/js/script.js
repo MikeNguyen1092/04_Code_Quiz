@@ -9,34 +9,36 @@ let prompt = document.querySelector("#prompt")
 let questionNumber = 0
 let secondsLeft = 70
 
+
+    // First function to run. Makes start button, prompt, and random questions
 function init() {
     startGame.textContent = "Start Game";
     prompt.textContent = "This is a game where to see if you know your pokemon. Fastest time wins. You are deducted 10 seconds for every question you get wrong. Good luck!";
+    randomQuestion();
 
 }
 
-    // adds adds question and answer to page
+    // Main function to run the game
 function quizGame(){
-    // clears the answers so there is no doubles.
+
+    // Clears the answers so there is no doubles.
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
 
-    if(questionNumber == questions.length) {
-        questionNumber = 0; // TODO: place holder, need to go to high score when finished.
-
-    }
-      // Check if the current question has an image
-    else if (questions[questionNumber].q.includes("./assets/images/")) {
+    // Check if the current question has an image
+    if (questions[questionNumber].q.includes("./assets/images/")) {
     const image = document.createElement("img");
     image.src = questions[questionNumber].q;
     questionsScript.textContent = "Who's that Pokemon?"
-    // Append the image element to the HTML where you want it to be displayed
+    
+    //Append the image element to the HTML where you want it to be displayed
     questionImage.appendChild(image);
 
-    // get the question from the question js and make it appear on the page
-  } else {
-  questionsScript.textContent = questions[questionNumber].q;
-  }
+    // Get the question from the question.js and make it appear on the page
+    } else {
+        questionsScript.textContent = questions[questionNumber].q;
+    }
+
     // get the corresponding answers and make it appear on the page as li element
     questions[questionNumber].a.forEach(element => {
     const listItem = document.createElement("li");
@@ -46,60 +48,61 @@ function quizGame(){
     // Add a click event listener to each list item
     listItem.addEventListener("click", function() {
         correctAnswer(this);
-        // questionNumber++;
+        questionNumber++;
       });
     });
     console.log(questionNumber)
 }
 
-// FIXME: when questionNumber runs out of questions, it returns undefined. how do we fix?
+// TODO: maybe play sound? Check if question is correct.
 function correctAnswer(element) {
     let clickedAnswer = element.textContent
-
-    if (clickedAnswer == questions[questionNumber].c) {
+        // TODO: place holder, need to go to high score when finished.
+    if(questionNumber == questions.length) {
+        window.location.href = "highscores.html"
+    
+    
+    } else if (clickedAnswer == questions[questionNumber].c) {
         console.log("correct!");
-        questionNumber++;
         quizGame();
         
     // if question is wrong, subtract 10 seconds 
     } else {console.log("incorrect");
         secondsLeft = secondsLeft - 10;
-        questionNumber++;
         quizGame();
     }
 }
-//TODO: try to get random question to work at the start of game
-
-// function randomQuestion() {
-//     for (let i=0; i<questions.length;i++){
-//         const j = Math.floor(Math.random() * questions.length);
-//         const temp = questions[i];
-//         questions[i] = questions[j]
-//         questions[j] = temp;
-//     }
-// } 
-//
-
-init();
+    // Random question every time games start
+function randomQuestion() {
+    for (let i=0; i<questions.length;i++){
+        const j = Math.floor(Math.random() * questions.length);
+        const temp = questions[i];
+        questions[i] = questions[j]
+        questions[j] = temp;
+    }
+} 
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function() {
 quizGame();
     startGame.innerHTML = "";
     prompt.innerHTML = "";
-    // set timer to count down every 1 second
+
+    // Set timer to count down every 1 second
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
 
         if(secondsLeft <= 0){
             clearInterval(timerInterval);
-            // TODO: when timer is done go to scores page
-            console.log("Done!")
+
+            // When timer is done go to scores page
+            window.location.href = "highscores.html"
         } 
     }, 1000)
 
     // removes the border of the "start game"
     startGame.setAttribute("style", "border: 0px");
-// randomQuestion();
 });
+
+init();
