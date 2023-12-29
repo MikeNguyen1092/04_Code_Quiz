@@ -6,7 +6,7 @@ let questionImage = document.querySelector("#imageContainer");
 let timer = document.querySelector("#timer");
 let prompt = document.querySelector("#prompt")
 
-let questionNumber = 5
+let questionNumber = 0
 let secondsLeft = 70
 
 function init() {
@@ -15,17 +15,18 @@ function init() {
 
 }
 
-
-
     // adds adds question and answer to page
 function quizGame(){
     // clears the answers so there is no doubles.
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
 
+    if(questionNumber == questions.length) {
+        questionNumber = 0; // TODO: place holder, need to go to high score when finished.
 
+    }
       // Check if the current question has an image
-  if (questions[questionNumber].q.includes("./assets/images/")) {
+    else if (questions[questionNumber].q.includes("./assets/images/")) {
     const image = document.createElement("img");
     image.src = questions[questionNumber].q;
     questionsScript.textContent = "Who's that Pokemon?"
@@ -54,12 +55,17 @@ function quizGame(){
 // FIXME: when questionNumber runs out of questions, it returns undefined. how do we fix?
 function correctAnswer(element) {
     let clickedAnswer = element.textContent
- if (clickedAnswer == questions[questionNumber].c) {
-        console.log("correct!")
+
+    if (clickedAnswer == questions[questionNumber].c) {
+        console.log("correct!");
+        questionNumber++;
+        quizGame();
         
     // if question is wrong, subtract 10 seconds 
     } else {console.log("incorrect");
-        secondsLeft = secondsLeft - 10
+        secondsLeft = secondsLeft - 10;
+        questionNumber++;
+        quizGame();
     }
 }
 //TODO: try to get random question to work at the start of game
@@ -74,16 +80,14 @@ function correctAnswer(element) {
 // } 
 //
 
-// TODO: make text disappear when game starts. refer to Day4-09
 init();
-
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function() {
 quizGame();
     startGame.innerHTML = "";
     prompt.innerHTML = "";
-    // set timer
+    // set timer to count down every 1 second
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
@@ -94,5 +98,8 @@ quizGame();
             console.log("Done!")
         } 
     }, 1000)
+
+    // removes the border of the "start game"
+    startGame.setAttribute("style", "border: 0px");
 // randomQuestion();
 });

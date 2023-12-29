@@ -13,23 +13,23 @@ const questions = [
         c: "Choice 3"
     },
     {
-        q: "Question 3",
-        a: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        c: "Choice 2"
+        q: "./assets/images/eevee.webp",
+        a: ["Pikachu", "Mewtwo", "Eevee", "Jigglypuff"],
+        c: "Eevee"
     },
     {
-        q: "Question 4",
-        a: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        c: "Choice 4"
+        q: "Who was on Team Rocket?",
+        a: ["Jessie", "James", "Meowth", "All of the above"],
+        c: "All of the above"
     },
     {
-        q: "Who was Ash's first pokemon?",
-        a: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        c: "Choice 1"
+        q: "Who was Ash's starter pokemon?",
+        a: ["Pikachu", "Bulbasaur", "Squirtle", "Charmander"],
+        c: "Pikachu"
     },
     {
         q: "./assets/images/charizard.jpg",
-        a: ["Choice 1", "Charizard", "Choice 3", "Choice 4"],
+        a: ["Charmeleon", "Charizard", "Charmander", "Pikachu"],
         c: "Charizard"
     }
 ]
