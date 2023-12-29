@@ -1,6 +1,4 @@
 // Questions
-let questionIndex = 0;
-
 const questions = [
     {
         q: "How do we create an object?",
@@ -33,16 +31,3 @@ const questions = [
         c: "Charizard"
     }
 ]
-
-// Current Question is
-questions[questionIndex].q
-// Current answers 
-for (let i = 0; i < questions[questionIndex].a.length; i++) {
-    // be each answer
-    const element = questions[questionIndex].a[i];
-    if (questions[questionIndex].c === questions) {
-    console.log("correct!");
-    }
-
-    else; 
-}
