@@ -1,10 +1,10 @@
 let startGame = document.querySelector("#start-button");
 let highScore = document.querySelector("#high-score");
-let questionsScript = document.querySelector("#questionsHTML");
+let questionsScript = document.querySelector(".questionsHTML");
 let answerScript = document.querySelector("#answersHTML");
-let questionImage = document.querySelector("#imageContainer");
+let questionImage = document.querySelector(".imageContainer");
 let timer = document.querySelector("#timer");
-let prompt = document.querySelector("#prompt");
+let prompt = document.querySelector(".prompt");
 let correct = document.querySelector("#correct");
 
 
@@ -17,6 +17,16 @@ function init() {
     prompt.textContent =
         "This is a Pokemon trivia game. Fastest time wins. You are deducted 10 seconds for every question you get wrong. Good luck!";
     randomQuestion();
+}
+
+// Random question every time games start
+function randomQuestion() {
+    for (let i = 0; i < questions.length; i++) {
+        const j = Math.floor(Math.random() * questions.length);
+        const temp = questions[i];
+        questions[i] = questions[j];
+        questions[j] = temp;
+    }
 }
 
 // Main function to run the game
@@ -54,13 +64,14 @@ function quizGame() {
     console.log(questionIndex);
 }
 
-// TODO: maybe play sound? Check if question is correct.
+// TODO: maybe play sound? Check if question is correct. Update question index and 1s delay before next question is displayed
 function correctAnswer(element) {
     let clickedAnswer = element.textContent;
 
     if (clickedAnswer == questions[questionIndex].c) {
         questionIndex++;
         correct.textContent = "Correct!";
+        secondsLeft = secondsLeft + 1
         setTimeout(quizGame, 1000);
 
         // if question is wrong, subtract 10 seconds
@@ -68,17 +79,18 @@ function correctAnswer(element) {
         secondsLeft = secondsLeft - 10;
         questionIndex++;
         correct.textContent = "Incorrect!";
+        secondsLeft = secondsLeft + 1
         setTimeout(quizGame, 1000);
     }
 }
-// Random question every time games start
-function randomQuestion() {
-    for (let i = 0; i < questions.length; i++) {
-        const j = Math.floor(Math.random() * questions.length);
-        const temp = questions[i];
-        questions[i] = questions[j];
-        questions[j] = temp;
-    }
+// TODO: Get this to work. Input initials, save to local storage
+function inputInitials() {
+    answerScript.innerHTML = "";
+    questionImage.innerHTML = "";
+    correct.innerHTML = "";
+
+    questionsScript.textContent = "Your score is " + secondsLeft;
+
 }
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
@@ -95,12 +107,12 @@ startGame.addEventListener("click", function () {
         if (secondsLeft <= 0 || questionIndex == questions.length) {
             clearInterval(timerInterval);
 
-            // When timer is done go to scores page
-            // window.location.href = "highscores.html"
+            // When timer is done go to input high score function
+            inputInitials();
         }
     }, 1000);
 
-    // removes the border of the "start game"
+    // Removes the border of the "start game"
     startGame.setAttribute("style", "border: 0px");
 });
 

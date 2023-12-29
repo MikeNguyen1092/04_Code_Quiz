@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Game</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
-<body>
-    <header>
-        <nav>
-            <a id="high-score" href="highscores.html">View High Score</a>
-            <div id="timer"></div>
-        </nav>
-        <h1>Quiz Game</h1>
-        
-    </header>
-    <main>
-        <p id="prompt"></p>
-        <div id="start-button"></div>
-        <h2 id="questionsHTML"></h2>
-        <div id="imageContainer"></div>
-        
-        <div>
-            <ol id="answersHTML"></ol>
-        </div>
-        <h3 id="correct"></h3>
-    </main>
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/scores.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz Game</title>
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a id="high-score" href="highscores.html">View High Score</a>
+                <div id="timer"></div>
+            </nav>
+            <h1>Quiz Game</h1>
+        </header>
+        <main>
+            <section>
+                <p class="prompt"></p>
+                <div id="start-button"></div>
+            </section>
+            
+            <h2 class="questionsHTML"></h2>
+            <div class="imageContainer"></div>
+            <div>
+                <ol id="answersHTML"></ol>
+            </div>
+            <h3 id="correct"></h3>
+        </main>
+        <script src="./assets/js/questions.js"></script>
+        <script src="./assets/js/script.js"></script>
+        <script src="./assets/js/scores.js"></script>
+    </body>
 </html>

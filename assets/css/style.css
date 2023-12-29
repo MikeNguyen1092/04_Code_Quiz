@@ -1,6 +1,6 @@
 :root {
     --blue-white: #e7f1ee;
-    --heliotrope: #e866ec
+    --heliotrope: #e866ec;
 }
 
 body {
@@ -13,6 +13,18 @@ nav {
     justify-content: space-between;
 }
 
+#high-score {
+    order: 0;
+    margin-left: 0.5em;
+}
+
+h1 {
+    font-size: 350%;
+    flex-grow: 1;
+    text-align: center;
+    z-index: 1;
+}
+
 header {
     margin: 1em;
 }
@@ -23,41 +35,35 @@ main {
     align-items: center;
 }
 
-#prompt, #start-button {
+#prompt,
+#start-button {
     margin-top: 2em;
 }
 
-#high-score {
-    order: 0;
-    margin-left: .5em;
-    
+h2 {
+    font-size: 200%;
 }
 
-h1 {
-    font-size: 350%;
-    flex-grow: 1;
-    text-align: center;
-    z-index: 1;
-      
-}
-
-li, #start-button {
+li,
+#start-button {
     margin: 1em 0em;
     border: 2px solid gray;
 }
 
-li:hover{
+li:hover {
     cursor: pointer;
-    box-shadow: inset 0px 0px 10px var(--heliotrope), 0px 0px 15px var(--heliotrope);
+    box-shadow: inset 0px 0px 10px var(--heliotrope),
+        0px 0px 15px var(--heliotrope);
 }
 
-li:active{
+li:active {
     background-color: var(--heliotrope);
 }
 
-#answersHTML, #questionsHTML, #imageContainer {
+#answersHTML,
+#questionsHTML,
+#imageContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
