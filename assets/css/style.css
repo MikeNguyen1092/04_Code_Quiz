@@ -29,6 +29,7 @@ header {
     margin: 1em;
 }
 
+main, 
 section {
     display: flex;
     flex-direction: column;
