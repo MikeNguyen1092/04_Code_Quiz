@@ -37,21 +37,27 @@ section {
 }
 
 #prompt,
-#start-button {
+.start-button {
     margin-top: 2em;
 }
 
 h2 {
-    font-size: 200%;
+    font-size: 250%;
+    margin-bottom: 1em;
+}
+
+p {
+    font-size: 125%;
+    margin-bottom: 1em;
 }
 
 li,
-#start-button {
+.start-button {
     margin: 1em 0em;
     border: 2px solid gray;
 }
 
-li:hover {
+li:hover, .start-button:hover {
     cursor: pointer;
     box-shadow: inset 0px 0px 10px var(--heliotrope),
         0px 0px 15px var(--heliotrope);

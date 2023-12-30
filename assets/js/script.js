@@ -1,11 +1,12 @@
-let startGame = document.querySelector("#start-button");
+let startGame = document.querySelector(".start-button");
 let highScore = document.querySelector("#high-score");
 let questionsScript = document.querySelector(".questionsHTML");
 let answerScript = document.querySelector("#answersHTML");
 let questionImage = document.querySelector(".imageContainer");
 let timer = document.querySelector("#timer");
 let prompt = document.querySelector(".prompt");
-let correct = document.querySelector("#correct");
+let correct = document.querySelector(".correct");
+let saveForm = document.querySelector(".save-form")
 
 
 let questionIndex = 0;
@@ -35,6 +36,7 @@ function quizGame() {
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
     correct.innerHTML = "";
+    
 
     // Check if the current question has an image
     if (questions[questionIndex].q.includes("./assets/images/")) {
@@ -85,16 +87,31 @@ function correctAnswer(element) {
 }
 // TODO: Get this to work. Input initials, save to local storage
 function inputInitials() {
+    questionsScript.innerHTML = "";
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
     correct.innerHTML = "";
 
-    questionsScript.textContent = "Your score is " + secondsLeft;
+    const h2El = document.createElement("h2");
+    const initials = document.createElement("p");
+    const form = document.createElement("input");
+    const saveButton = document.createElement("button");
+
+    h2El.textContent = "Your score is " + secondsLeft;
+    initials.textContent = "Please input your initials";
+    saveButton.textContent = "Save"
+
+    saveForm.appendChild(h2El)
+    saveForm.appendChild(initials);
+    saveForm.appendChild(form);
+    saveForm.appendChild(saveButton)
+
 
 }
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function () {
+    // inputInitials();
     quizGame();
     startGame.innerHTML = "";
     prompt.innerHTML = "";
@@ -108,7 +125,7 @@ startGame.addEventListener("click", function () {
             clearInterval(timerInterval);
 
             // When timer is done go to input high score function
-            inputInitials();
+            setTimeout(inputInitials,1000);
         }
     }, 1000);
 
