@@ -9,7 +9,7 @@ let correct = document.querySelector(".correct");
 let saveForm = document.querySelector(".save-form")
 
 
-let questionIndex = 0;
+let questionIndex = 5;
 let secondsLeft = 70;
 
 // First function to run. Makes start button, prompt, and random questions
@@ -60,6 +60,7 @@ function quizGame() {
 
         // Add a click event listener to each list item
         listItem.addEventListener("click", function () {
+            questionIndex++;
             correctAnswer(this);
         });
     });
@@ -68,10 +69,11 @@ function quizGame() {
 
 // TODO: maybe play sound? Check if question is correct. Update question index and 1s delay before next question is displayed
 function correctAnswer(element) {
+    let i = questionIndex - 1;
     let clickedAnswer = element.textContent;
 
-    if (clickedAnswer == questions[questionIndex].c) {
-        questionIndex++;
+    if (clickedAnswer == questions[i].c) {
+        // questionIndex++;
         correct.textContent = "Correct!";
         secondsLeft = secondsLeft + 1
         setTimeout(quizGame, 1000);
@@ -79,7 +81,7 @@ function correctAnswer(element) {
         // if question is wrong, subtract 10 seconds
     } else {
         secondsLeft = secondsLeft - 10;
-        questionIndex++;
+        // questionIndex++;
         correct.textContent = "Incorrect!";
         secondsLeft = secondsLeft + 1
         setTimeout(quizGame, 1000);
@@ -92,10 +94,10 @@ function inputInitials() {
     questionImage.innerHTML = "";
     correct.innerHTML = "";
 
-    const h2El = document.createElement("h2");
-    const initials = document.createElement("p");
-    const form = document.createElement("input");
-    const saveButton = document.createElement("button");
+    let h2El = document.createElement("h2");
+    let initials = document.createElement("p");
+    let form = document.createElement("input");
+    let saveButton = document.createElement("button");
 
     h2El.textContent = "Your score is " + secondsLeft;
     initials.textContent = "Please input your initials";
@@ -104,7 +106,18 @@ function inputInitials() {
     saveForm.appendChild(h2El)
     saveForm.appendChild(initials);
     saveForm.appendChild(form);
-    saveForm.appendChild(saveButton)
+    saveForm.appendChild(saveButton);
+
+    saveButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        let scores = {
+            playerInitials: form.value,
+            hs: secondsLeft,
+        }
+        localStorage.setItem("scores", JSON.stringify(scores));
+        window.location.href = "highscores.html"
+    })
 
 
 }
@@ -123,6 +136,10 @@ startGame.addEventListener("click", function () {
 
         if (secondsLeft <= 0 || questionIndex == questions.length) {
             clearInterval(timerInterval);
+            questionsScript.innerHTML = "";
+            answerScript.innerHTML = "";
+            questionImage.innerHTML = "";
+            correct.innerHTML = "";
 
             // When timer is done go to input high score function
             setTimeout(inputInitials,1000);

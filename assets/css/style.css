@@ -3,9 +3,10 @@
     --heliotrope: #e866ec;
 }
 
+/* Index.html */
+
 body {
     font-size: 16px;
-    background-color: var(--blue-white);
 }
 
 nav {
@@ -28,6 +29,7 @@ h1 {
 header {
     margin: 1em;
 }
+
 
 main, 
 section {
@@ -74,3 +76,22 @@ li:active {
     flex-direction: column;
     align-items: center;
 }
+
+
+input {
+    margin-bottom: 1em;
+}
+
+/* highscores */
+
+.HS-window {
+    display: block;
+    background-color:	#FFFFE0;
+    border: 1px solid #eceff1;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+      rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+    margin: 60px auto;
+    padding: 20px;
+    width: 40vw;
+  }
