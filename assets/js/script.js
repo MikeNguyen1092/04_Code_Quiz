@@ -93,34 +93,40 @@ function inputInitials() {
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
     correct.innerHTML = "";
-
+  
     let h2El = document.createElement("h2");
     let initials = document.createElement("p");
     let form = document.createElement("input");
     let saveButton = document.createElement("button");
-
+  
     h2El.textContent = "Your score is " + secondsLeft;
     initials.textContent = "Please input your initials";
-    saveButton.textContent = "Save"
-
-    saveForm.appendChild(h2El)
+    saveButton.textContent = "Save";
+  
+    saveForm.appendChild(h2El);
     saveForm.appendChild(initials);
     saveForm.appendChild(form);
     saveForm.appendChild(saveButton);
-
+  
     saveButton.addEventListener("click", function(event) {
-        event.preventDefault();
+      event.preventDefault();
         
-        let scores = {
-            playerInitials: form.value,
-            hs: secondsLeft,
-        }
-        localStorage.setItem("scores", JSON.stringify(scores));
-        window.location.href = "highscores.html"
-    })
+      let existingScores = JSON.parse(localStorage.getItem("scores")) || [];
 
+      if(!Array.isArray(existingScores)) {
+        existingScores = [];
+      }
 
-}
+      let newScore = {
+        playerInitials: form.value,
+        hs: secondsLeft,
+      };
+
+      existingScores.push(newScore);
+      localStorage.setItem("scores", JSON.stringify(existingScores));
+      window.location.href = "highscores.html";
+    });
+  }
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function () {
