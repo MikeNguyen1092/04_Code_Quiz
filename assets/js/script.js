@@ -9,8 +9,8 @@ let correct = document.querySelector(".correct");
 let saveForm = document.querySelector(".save-form")
 
 
-let questionIndex = 5;
-let secondsLeft = 70;
+let questionIndex = 0;
+let secondsLeft = 90;
 
 // First function to run. Makes start button, prompt, and random questions
 function init() {
@@ -87,7 +87,7 @@ function correctAnswer(element) {
         setTimeout(quizGame, 1000);
     }
 }
-// TODO: Get this to work. Input initials, save to local storage
+// Input initials, save to local storage
 function inputInitials() {
     questionsScript.innerHTML = "";
     answerScript.innerHTML = "";
