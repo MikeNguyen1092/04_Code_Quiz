@@ -36,8 +36,8 @@ const questions = [
         c: "Master Ball"
     },
     {
-        q: "What is bulbasaur final evolution?",
+        q: "What is Bulbasaur final evolution?",
         a: ["It has none", "Venusaur", "Blastoise", "Charizard"],
-        c: "Venusar"
+        c: "Venusaur"
     }
 ]

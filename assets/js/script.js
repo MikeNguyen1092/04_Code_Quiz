@@ -10,13 +10,13 @@ let saveForm = document.querySelector(".save-form")
 
 
 let questionIndex = 0;
-let secondsLeft = 90;
+let secondsLeft = 100;
 
 // First function to run. Makes start button, prompt, and random questions
 function init() {
     startGame.textContent = "Start Game";
-    prompt.textContent =
-        "This is a Pokemon trivia game. Fastest time wins. You are deducted 10 seconds for every question you get wrong. Good luck!";
+    prompt.innerHTML =
+        "This is a Pokemon trivia game. Fastest time wins. You are deducted 10 seconds for every question you get wrong. <br>Good luck!";
     randomQuestion();
 }
 
