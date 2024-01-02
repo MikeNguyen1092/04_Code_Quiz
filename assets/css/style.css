@@ -1,12 +1,17 @@
 :root {
-    --blue-white: #e7f1ee;
-    --heliotrope: #d8c3d8;
+    --lightblue: #0075BE ;
+    --yellow: #ffcb05;
+    --darkblue: #3c5aa6;
+    --white: #fff;
+    --red: #ff4b4b;
+
 }
 
 /* Index.html */
 
 body {
     font-size: 16px;
+    background-color: var(--white);
 }
 
 nav {
@@ -14,7 +19,7 @@ nav {
     justify-content: space-between;
 }
 
-#high-score {
+#high-score-link {
     order: 0;
     margin-left: 0.5em;
 }
@@ -24,12 +29,12 @@ h1 {
     flex-grow: 1;
     text-align: center;
     z-index: 1;
+    margin-bottom: 1em;
 }
 
 header {
     margin: 1em;
 }
-
 
 main, 
 section {
@@ -53,27 +58,32 @@ h2 {
 p {
     font-size: 125%;
     margin-bottom: 1em;
+    line-height: 1.2em;
 }
 
 img {
-    max-width: 720px;
+    max-width: 500px;
 }
 
-#answersHTML > li,
-.start-button {
+li,
+.start-button,
+#clearScore,
+#playAgain {
     margin: 1em 0em;
-    border: 2px solid gray;
+    font-size: 125%;
+
 }
 
-#answersHTML > li:hover, .start-button:hover {
+#answersHTML > li:hover,
+.start-button:hover,
+#clearScore:hover,
+#playAgain:hover {
     cursor: pointer;
-    box-shadow: inset 0px 0px 10px var(--heliotrope),
-        0px 0px 15px var(--heliotrope);
+    box-shadow: inset 0px 0px 20px 15px var(--red),
+        0px 0px 20px 10px var(--red);
+    
 }
 
-#answersHTML > li:active {
-    background-color: var(--heliotrope);
-}
 
 #answersHTML,
 #questionsHTML,
@@ -90,20 +100,26 @@ input {
 
 /* highscores.html */
 
+#high-score {
+    margin: 32px auto 1em auto;
+}
+
+
 .HS-window, main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:	#e7fbff;
-    border: 1px solid #eceff1;
-    border-radius: 8px;
-    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
-      rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
-    margin: 60px auto;
+    background-color:	var(--yellow);
+    border: 1px solid var(--darkblue);
+    border-radius: 3px;
+    box-shadow: var(--lightblue) 0px 0px 0 15px,
+      var(--darkblue) -9px 10px 0px 15px;
+    margin: auto;
     padding: 20px;
-    width: 70vw;
-  }
+    width: 80vw;
+}
 
-  .savScores > *{
-    margin: 1em 0px;
-  }
+#clearScore, #playAgain {
+    margin: 10px 0;
+    
+}

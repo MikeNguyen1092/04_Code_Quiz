@@ -16,7 +16,7 @@ let secondsLeft = 100;
 function init() {
     startGame.textContent = "Start Game";
     prompt.innerHTML =
-        "This is a Pokemon trivia game. Fastest time wins. You are deducted 10 seconds for every question you get wrong. <br>Good luck!";
+        "This is a Pokemon trivia game. You are deducted 10 seconds for every question you get wrong. <br>Fastest time wins. <br>Good luck!";
     randomQuestion();
 }
 
