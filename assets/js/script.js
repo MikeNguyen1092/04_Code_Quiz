@@ -6,8 +6,7 @@ let questionImage = document.querySelector(".imageContainer");
 let timer = document.querySelector("#timer");
 let prompt = document.querySelector(".prompt");
 let correct = document.querySelector(".correct");
-let saveForm = document.querySelector(".save-form")
-
+let saveForm = document.querySelector(".save-form");
 
 let questionIndex = 0;
 let secondsLeft = 100;
@@ -36,7 +35,6 @@ function quizGame() {
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
     correct.innerHTML = "";
-    
 
     // Check if the current question has an image
     if (questions[questionIndex].q.includes("./assets/images/")) {
@@ -44,7 +42,7 @@ function quizGame() {
         image.src = questions[questionIndex].q;
         questionsScript.textContent = "Who's that Pokemon?";
 
-        //Append the image element to the HTML where you want it to be displayed
+        //Append the image element to the HTML
         questionImage.appendChild(image);
 
         // Get the question from the question.js and make it appear on the page
@@ -52,7 +50,7 @@ function quizGame() {
         questionsScript.textContent = questions[questionIndex].q;
     }
 
-    // get the corresponding answers and make it appear on the page as li element
+    // Get the corresponding answers and make it appear on the page as li element
     questions[questionIndex].a.forEach((element) => {
         const listItem = document.createElement("li");
         listItem.textContent = element;
@@ -67,66 +65,72 @@ function quizGame() {
     console.log(questionIndex);
 }
 
-// TODO: maybe play sound? Check if question is correct. Update question index and 1s delay before next question is displayed
+// Check if question is correct. Update question index and 1s delay before next question is displayed. Also add back the 1s delay to timer.
 function correctAnswer(element) {
     let i = questionIndex - 1;
     let clickedAnswer = element.textContent;
 
     if (clickedAnswer == questions[i].c) {
-        // questionIndex++;
         correct.textContent = "Correct!";
-        secondsLeft = secondsLeft + 1
+        correct.style.color = "green"
+        secondsLeft = secondsLeft + 1;
         setTimeout(quizGame, 1000);
 
         // if question is wrong, subtract 10 seconds
     } else {
         secondsLeft = secondsLeft - 10;
-        // questionIndex++;
         correct.textContent = "Incorrect!";
-        secondsLeft = secondsLeft + 1
+        correct.style.color = "red"
+        secondsLeft = secondsLeft + 1;
         setTimeout(quizGame, 1000);
     }
 }
+
 // Input initials, save to local storage
 function inputInitials() {
+    // Clears any questions out.
     questionsScript.innerHTML = "";
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
     correct.innerHTML = "";
-  
+
+    // Using the DOM to create elements
     let h2El = document.createElement("h2");
     let initials = document.createElement("p");
     let form = document.createElement("input");
     let saveButton = document.createElement("button");
-  
+
+    // Add text
     h2El.textContent = "Your score is " + secondsLeft;
     initials.textContent = "Please input your initials";
     saveButton.textContent = "Save";
-  
+
+    // Append to HTML
     saveForm.appendChild(h2El);
     saveForm.appendChild(initials);
     saveForm.appendChild(form);
     saveForm.appendChild(saveButton);
-  
-    saveButton.addEventListener("click", function(event) {
-      event.preventDefault();
-        
-      let existingScores = JSON.parse(localStorage.getItem("scores")) || [];
 
-      if(!Array.isArray(existingScores)) {
-        existingScores = [];
-      }
+    // 
+    saveButton.addEventListener("click", function (event) {
+        event.preventDefault();
 
-      let newScore = {
-        playerInitials: form.value,
-        hs: secondsLeft,
-      };
+        let existingScores = JSON.parse(localStorage.getItem("scores")) || [];
 
-      existingScores.push(newScore);
-      localStorage.setItem("scores", JSON.stringify(existingScores));
-      window.location.href = "highscores.html";
+        if (!Array.isArray(existingScores)) {
+            existingScores = [];
+        }
+
+        let newScore = {
+            playerInitials: form.value,
+            hs: secondsLeft,
+        };
+
+        existingScores.push(newScore);
+        localStorage.setItem("scores", JSON.stringify(existingScores));
+        window.location.href = "highscores.html";
     });
-  }
+}
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function () {
@@ -148,7 +152,7 @@ startGame.addEventListener("click", function () {
             correct.innerHTML = "";
 
             // When timer is done go to input high score function
-            setTimeout(inputInitials,1000);
+            setTimeout(inputInitials, 1000);
         }
     }, 1000);
 
