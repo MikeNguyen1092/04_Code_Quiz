@@ -8,18 +8,23 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body>
+        <!-- Pokemon title, timer, and go to high score page -->
         <header>
             <nav>
                 <a id="high-score-link" href="highscores.html">View High Score</a>
                 <div id="timer"></div>
             </nav>
-            <h1>Quiz Game</h1>
+            <h1>Pokémon Quiz Game</h1>
         </header>
-        <main>
+
+        <!-- main content of the page -->
+        <main class ="card">
             <section id="message">
-                <p class="prompt"></p>
+                <h3 class="prompt"></h3>
+                <br>
                 <div class="start-button"></div>
             </section>
+
             <section id="questions">    
                 <h2 class="questionsHTML"></h2>
                 <div class="imageContainer"></div>
@@ -28,9 +33,11 @@
                 </div>
                 <h3 class="correct"></h3>
             </section>
+            
             <section class="save-form">
             </section>
         </main>
+
         <script src="./assets/js/questions.js"></script>
         <script src="./assets/js/script.js"></script>
         <script src="./assets/js/scores.js"></script>

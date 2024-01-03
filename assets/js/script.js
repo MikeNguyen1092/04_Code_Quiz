@@ -1,3 +1,4 @@
+// ================ DOM Traversal =============== //
 let startGame = document.querySelector(".start-button");
 let highScore = document.querySelector("#high-score");
 let questionsScript = document.querySelector(".questionsHTML");
@@ -8,8 +9,9 @@ let prompt = document.querySelector(".prompt");
 let correct = document.querySelector(".correct");
 let saveForm = document.querySelector(".save-form");
 
+// ==== Variables ==== //
 let questionIndex = 0;
-let secondsLeft = 100;
+let secondsLeft = 90;
 
 // First function to run. Makes start button, prompt, and random questions
 function init() {
@@ -62,7 +64,6 @@ function quizGame() {
             correctAnswer(this);
         });
     });
-    console.log(questionIndex);
 }
 
 // Check if question is correct. Update question index and 1s delay before next question is displayed. Also add back the 1s delay to timer.
@@ -76,7 +77,7 @@ function correctAnswer(element) {
         secondsLeft = secondsLeft + 1;
         setTimeout(quizGame, 1000);
 
-        // if question is wrong, subtract 10 seconds
+        // If question is wrong, subtract 10 seconds
     } else {
         secondsLeft = secondsLeft - 10;
         correct.textContent = "Incorrect!";
@@ -88,6 +89,7 @@ function correctAnswer(element) {
 
 // Input initials, save to local storage
 function inputInitials() {
+
     // Clears any questions out.
     questionsScript.innerHTML = "";
     answerScript.innerHTML = "";
@@ -96,7 +98,7 @@ function inputInitials() {
 
     // Using the DOM to create elements
     let h2El = document.createElement("h2");
-    let initials = document.createElement("p");
+    let initials = document.createElement("h3");
     let form = document.createElement("input");
     let saveButton = document.createElement("button");
 
@@ -111,30 +113,37 @@ function inputInitials() {
     saveForm.appendChild(form);
     saveForm.appendChild(saveButton);
 
-    // 
+    // Event listener to add high scores to local storage
     saveButton.addEventListener("click", function (event) {
         event.preventDefault();
 
-        let existingScores = JSON.parse(localStorage.getItem("scores")) || [];
+        // Get existing scores
+        let existingScores = JSON.parse(localStorage.getItem("scores"));
 
+        // Put that into an array
         if (!Array.isArray(existingScores)) {
             existingScores = [];
         }
 
+        // Take new score and put it as an object
         let newScore = {
             playerInitials: form.value,
             hs: secondsLeft,
         };
 
+        // Add the new object to existing array
         existingScores.push(newScore);
+
+        // Store the newly added high score to local storage
         localStorage.setItem("scores", JSON.stringify(existingScores));
+
+        // Go to high score html page
         window.location.href = "highscores.html";
     });
 }
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
 startGame.addEventListener("click", function () {
-    // inputInitials();
     quizGame();
     startGame.innerHTML = "";
     prompt.innerHTML = "";
