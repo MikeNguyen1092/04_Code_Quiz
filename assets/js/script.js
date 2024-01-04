@@ -58,19 +58,22 @@ function quizGame() {
         listItem.textContent = element;
         answerScript.appendChild(listItem);
 
-        // Add a click event listener to each list item
+        // Add a click event listener to each list item. Update questionIndex by 1.
         listItem.addEventListener("click", function () {
             questionIndex++;
             correctAnswer(this);
         });
     });
-}
+} // End of quizGame function
 
-// Check if question is correct. Update question index and 1s delay before next question is displayed. Also add back the 1s delay to timer.
+// Check if question is correct. Update question index and. The `element` is from the `this` from where it is called. 
 function correctAnswer(element) {
+    
+    // Added this b/c questionIndex is increased before answer check. 
     let i = questionIndex - 1;
     let clickedAnswer = element.textContent;
 
+    // 1s delay before next question is displayed. Also add back the 1s delay to timer.
     if (clickedAnswer == questions[i].c) {
         correct.textContent = "Correct!";
         correct.style.color = "green"
@@ -84,13 +87,13 @@ function correctAnswer(element) {
         correct.style.color = "red"
         secondsLeft = secondsLeft + 1;
         setTimeout(quizGame, 1000);
-    }
-}
+    } // end of if
+} // End of correctAnswer function
 
 // Input initials, save to local storage
 function inputInitials() {
 
-    // Clears any questions out.
+    // Clears any questions/answers out.
     questionsScript.innerHTML = "";
     answerScript.innerHTML = "";
     questionImage.innerHTML = "";
@@ -139,17 +142,18 @@ function inputInitials() {
 
         // Go to high score html page
         window.location.href = "highscores.html";
-    });
-}
+
+    }); // End of event listener 
+} // End of inputInitials 
 
 // Click button to start game - calls the function quizGame, clears message, and start timer
-startGame.addEventListener("click", function () {
+startGame.addEventListener("click", function() {
     quizGame();
     startGame.innerHTML = "";
     prompt.innerHTML = "";
 
     // Set timer to count down every 1 second
-    var timerInterval = setInterval(function () {
+    var timerInterval = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
 

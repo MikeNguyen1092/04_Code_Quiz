@@ -1,6 +1,6 @@
 
 :root {
-    --darkblue: #3c5aa6;
+    --darkblue: #3c5aa6ed;
     --lightblue: #0075BE;
     --red: #fc6161;
     --white: #fff;
@@ -16,6 +16,7 @@ body {
 header {
     margin: 1em;
 }
+
 
 h1 {
     font-size: 350%;
@@ -80,13 +81,14 @@ section,
     flex-direction: column;
     align-items: center;
     background-color:	var(--yellow);
-    border-radius: 3px;
+    border-radius: 1px;
     box-shadow: var(--lightblue) 0px 0px 0 15px,
-                var(--darkblue) -9px 10px 0px 15px;
+                var(--darkblue) -9px 10px 1px 15px;
     margin: auto;
     padding: 20px;
     width: 80vw;
     height: 75%;
+   
 }
 
 /* Add box shadow when li is hover */

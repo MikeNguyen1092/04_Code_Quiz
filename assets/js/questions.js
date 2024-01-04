@@ -1,7 +1,7 @@
 // Questions
 const questions = [
     {
-        q: "What Pokémon has an ID of # 0009",
+        q: "What Pokémon has an ID of # 0009. (Hint: Water type)",
         a: ["Seedot","Pidgey","Blastoise", "Caterpie"],
         c: "Blastoise"
     },
